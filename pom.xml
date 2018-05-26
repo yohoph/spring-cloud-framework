@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jmsw.framework</groupId>
+    <artifactId>jmsw-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>core</module>
+        <module>service-starter</module>
+        <module>config</module>
+        <module>registry</module>
+        <module>gateway</module>
+        <module>common</module>
+        <module>service-dependencies</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <resource.delimiter>@</resource.delimiter>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <framework.version>1.0-SNAPSHOT</framework.version>
+
+        <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
+        <spring.cloud.version>Finchley.M7</spring.cloud.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>core</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>common</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>service-starter</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>service-dependencies</artifactId>
+                <version>${framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>2.2.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- Maven私服设置 -->
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://192.168.10.11:8081/repository/maven-releases/</url>
+            <snapshots>
+                <checksumPolicy>warn</checksumPolicy>
+                <enabled>true</enabled>
+                <updatePolicy>interval:10</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>pango-releases</id>
+            <url>http://192.168.10.11:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>pango-snapshots</id>
+            <url>http://192.168.10.11:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>

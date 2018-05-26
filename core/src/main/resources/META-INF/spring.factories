@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.jmsw.framework.core.CoreAutoConfig,\
+  com.jmsw.framework.core.autoconfig.RedisAutoConfig,\
+  com.jmsw.framework.core.autoconfig.FeignAutoConfig,\
+  com.jmsw.framework.core.autoconfig.ElasticJobAutoConfig
+
+
+
