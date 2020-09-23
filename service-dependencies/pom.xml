@@ -5,7 +5,7 @@
 
     <artifactId>service-dependencies</artifactId>
     <groupId>com.jmsw.framework</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
@@ -23,6 +23,7 @@
         <pagehelper.boot.version>1.2.3</pagehelper.boot.version>
         <mysql.driver.version>5.1.30</mysql.driver.version>
         <druid.version>1.1.5</druid.version>
+        <mybatis.plus.version>3.0.5</mybatis.plus.version>
 
         <elastic-job.version>2.1.5</elastic-job.version>
         <cglib.version>2.2</cglib.version>
@@ -50,6 +51,10 @@
         <commons.collections.version>3.2.2</commons.collections.version>
         <commons.lang>2.4</commons.lang>
         <commons.http.client>4.4.1</commons.http.client>
+        <commons.compress>1.16</commons.compress>
+        <commons.beanutils>1.9.3</commons.beanutils>
+
+        <hibernate.validator>6.0.7.Final</hibernate.validator>
 
     </properties>
 
@@ -93,6 +98,12 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>net.logstash.logback</groupId>
@@ -219,19 +230,48 @@
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>6.0.7.Final</version>
+                <version>${hibernate.validator}</version>
             </dependency>
 
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
-                <version>1.9.3</version>
+                <version>${commons.beanutils}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons.compress}</version>
             </dependency>
 
 
         </dependencies>
 
     </dependencyManagement>
+
+    <!-- Maven私服设置 -->
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>pango-releases</id>
+            <url>http://192.168.10.11:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>pango-snapshots</id>
+            <url>http://192.168.10.11:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
 </project>

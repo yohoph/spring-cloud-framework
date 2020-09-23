@@ -1,6 +1,7 @@
 package com.jmsw.framework.core;
 
 import com.jmsw.framework.core.context.JmswFilter;
+import com.jmsw.framework.core.context.SimpleCORSFilter;
 import com.jmsw.framework.core.exception.GlobalExceptionHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,11 @@ public class CoreAutoConfig {
     @Bean
     public JmswFilter JmswFilter() {
         return new JmswFilter();
+    }
+
+    @Bean
+    public SimpleCORSFilter simpleCORSFilter() {
+        return new SimpleCORSFilter();
     }
 
 

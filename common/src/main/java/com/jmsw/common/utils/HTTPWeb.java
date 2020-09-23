@@ -146,10 +146,21 @@ public class HTTPWeb {
 	}
 	
 	public static String postBody(String url , String data){
+		Map<String,String> header = new HashMap<>();
+		header.put("Content-Type","application/json");
+		return postBody(url,data,header);
+	}
+
+	public static String postBody(String url , String data ,Map<String,String> header){
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost();
 		try {
 			httpPost.setURI(new URI(url));
+			if(header != null && !header.isEmpty()){
+				header.forEach((k,v)->{
+					httpPost.addHeader(k,v);
+				});
+			}
 //			httpPost.setHeader("Content-Type", "application/json");
 			httpPost.setEntity(new StringEntity(data,"utf-8"));
 			RequestConfig config = RequestConfig.custom()
@@ -228,7 +239,7 @@ public class HTTPWeb {
 		HttpPut httpPut = new HttpPut();
 		try {
 			httpPut.setURI(new URI(url));
-//			Httpput.setHeader("Content-Type", "application/json");
+			httpPut.setHeader("Content-Type", "application/json");
 			httpPut.setEntity(new StringEntity(data,"utf-8"));
 			RequestConfig config = RequestConfig.custom()
 					.setConnectTimeout(1000)

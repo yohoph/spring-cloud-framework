@@ -14,6 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +33,19 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 public class TaskExecutorConfig implements AsyncConfigurer{
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
+
+	@Autowired
+	private Executor task;
+
+	private void statc(){
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+			}
+		};
+		task.execute(runnable);
+
+	}
 	
 	/**
 	 * @return
