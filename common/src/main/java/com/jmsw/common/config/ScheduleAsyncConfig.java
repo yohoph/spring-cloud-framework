@@ -25,10 +25,10 @@ public class ScheduleAsyncConfig implements SchedulingConfigurer {
                 new BasicThreadFactory.Builder().namingPattern("Scheduling-%d").daemon(true).build()));
     }
 
-    @Bean("SchedulePool")
-    public ThreadPoolExecutor schedulePool() {
-        return new ScheduledThreadPoolExecutor(10,
-                new BasicThreadFactory.Builder().namingPattern("Scheduling-%d").daemon(true).build());
-    }
+//    @Bean("SchedulePool")
+//    public ThreadPoolExecutor schedulePool() {
+//        return new ScheduledThreadPoolExecutor(10,
+//                new BasicThreadFactory.Builder().namingPattern("Scheduling-%d").daemon(true).build());
+//    }
 
 }

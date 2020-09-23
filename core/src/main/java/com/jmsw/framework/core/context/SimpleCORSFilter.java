@@ -24,7 +24,6 @@ public class SimpleCORSFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        logger.info("SimpleCORSFilter,enableCorsSupport:" + enableCorsSupport);
         if(enableCorsSupport){
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             response.setHeader("Access-Control-Allow-Origin", "*");
