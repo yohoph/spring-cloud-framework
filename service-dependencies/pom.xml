@@ -103,6 +103,10 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>service-starter-jpa</artifactId>
+            </dependency>
 
 
             <dependency>

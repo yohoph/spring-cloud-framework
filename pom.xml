@@ -15,6 +15,7 @@
         <module>gateway</module>
         <module>common</module>
         <module>service-dependencies</module>
+        <module>service-starter-jpa</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -49,6 +50,12 @@
             <dependency>
                 <groupId>com.jmsw.framework</groupId>
                 <artifactId>service-starter</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jmsw.framework</groupId>
+                <artifactId>service-starter-jpa</artifactId>
                 <version>${framework.version}</version>
             </dependency>
 
