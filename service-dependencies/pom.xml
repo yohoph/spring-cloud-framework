@@ -35,7 +35,7 @@
 
         <!-- google's setting -->
         <google.guava>28.0-jre</google.guava>
-        <google.gson>2.8.0</google.gson>
+        <google.gson>2.8.9</google.gson>
         <com.google.zxing.version>3.2.0</com.google.zxing.version>
 
         <!-- JSON setting -->
